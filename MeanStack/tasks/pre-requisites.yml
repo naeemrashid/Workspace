@@ -1,3 +1,18 @@
+- name: update python | add key 
+  apt_key:
+   keyserver: keyserver.ubuntu.com
+   id: DB82666C
+   state: present
+- name: update python | add repository
+  apt_repository:
+   repo: 'deb http://ppa.launchpad.net/fkrull/deadsnakes-python2.7/ubuntu {{ ansible_distribution_release }} main'
+   state: present
+   update_cache: yes
+- name: update python | update python version to 2.7
+  apt:
+   pkg: python2.7
+   state: latest
+   install_recommends: no 
 - name: Install Git
   apt:
    name: git

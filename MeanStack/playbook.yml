@@ -1,9 +1,8 @@
 ---
  - hosts: mean
    remote_user: vagrant
-   become: true
+   become: yes
    become_method: sudo
-   become_user: root
    tasks:
    - include: tasks/pre-requisites.yml
    - include: tasks/mongodb.yml

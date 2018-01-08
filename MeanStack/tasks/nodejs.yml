@@ -1,15 +1,18 @@
 - name: Add script
-   url: 'https://deb.nodesource.com/setup_7.x'
-   dest: /temp/nodejs.sh
+  get_url:
+   url: "https://deb.nodesource.com/setup_7.x"
+   dest: "/tmp/nodejs.sh"
+   mode: "0440"
+   force_basic_auth: yes
 - name: set permissions
   file:
-   path: /temp/nodejs.sh
+   path: "/tmp/nodejs.sh"
    mode: "u+x"
 - name: execute script
-  shell: /temp/nodejs.sh
+  shell: "/tmp/nodejs.sh"
 - name: remove script
   file:
-   path: /temp/nodejs.sh
+   path: "/tmp/nodejs.sh"
    state: absent
 - name: install nodejs
   apt: name={{ item }} state=present update_cache=yes
