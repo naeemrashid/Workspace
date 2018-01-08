@@ -17,10 +17,10 @@
 - name: install nodejs
   apt: name={{ item }} state=present update_cache=yes
   with_items:
-   - build-essentials
+   - build-essential
    - nodejs
 - name: install bower and gulp
-  npm: name={{ item }} state=present update_cache=yes
+  npm: name={{ item }} state=present global=true
   with_items:
    - bower
    - gulp
