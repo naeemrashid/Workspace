@@ -1,0 +1,21 @@
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.box_check_update = false
+  config.ssh.insert_key = false
+  config.vm.define "mean" do |mean|
+    mean.vm.box_check_update = false
+    mean.vm.hostname="mean"
+     mean.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "meanstack"
+      vb.customize ["modifyvm", :id, "--memory", "512"]
+    end
+  end
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    ansible.playbook = "playbook.yml"
+  end
+  # forward mongodb and nodejs ports
+  config.vm.network "forwarded_port", guest: 27017, host: 27017
+config.vm.network "forwarded_port", guest: 3000, host: 3000
+end
