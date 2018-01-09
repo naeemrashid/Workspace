@@ -6,8 +6,8 @@
    become_user: root
    gather_facts: true
    tasks:
-   - include_vars: defaults/main.yml
+#   - include_vars: defaults/main.yml
 #   - include: tasks/pre-requisites.yml
-   - include: tasks/apache.yml
-   - include: tasks/mysql.yml
-# - include: tasks/php.yml
+#   - include: tasks/apache.yml
+#   - include: tasks/mysql.yml
+    - include: tasks/php.yml
