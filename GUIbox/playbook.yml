@@ -1,11 +1,10 @@
 ---
- - hosts: java
+ - hosts: guibox 
    remote_user: vagrant
    become: true
    become_method: sudo
    become_user: root
    gather_facts: true
    tasks:
-     - include: tasks/jdk.yml
-     - include: tasks/gnome-desktop.yml
-     - include: tasks/eclipse.yml
+     - include_vars: defaults/main.yml
+     - include: tasks/xfce-desktop.yml
