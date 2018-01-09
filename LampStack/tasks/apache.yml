@@ -1,8 +1,8 @@
 - name: install apache2
-   apt:
-    name: apache2
-    state: present 
-    update_cache: yes
+  apt:
+   name: apache2
+   state: present 
+   update_cache: yes
 - name: check apache2 is installed
   service:
    name: apache2
@@ -14,9 +14,7 @@
    direction: in
 - name: add localhost to configuration file
   lineinfile:
-   path: /etc/apache2/apache2.conf
-   line: 'ServerName localhost'
+   dest: "/etc/apache2/apache2.conf"
+   line: 'ServerName 127.0.0.1'
    owner: root
-   group: root
-   mode: 0644
 
