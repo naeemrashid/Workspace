@@ -5,6 +5,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "tomcat" do |tomcat|
     tomcat.vm.box_check_update = false
     tomcat.vm.hostname="tomcat"
+    tomcat.vm.synced_folder "src/", "/var/lib/tomcat7/webapps/"
      tomcat.vm.provider "virtualbox" do |vb|
       vb.gui = false
       vb.name = "tomcatstack"
