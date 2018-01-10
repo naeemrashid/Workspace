@@ -1,0 +1,12 @@
+- name: Install FindBugs, Maven, Cobertura
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+   - findbugs
+   - maven
+   - cobertura
+- name: Install Gradle | add repo
+  apt_repository:
+   repo: ppa:cwchien/gradle
+   state: present
+- name: Install Gradle
+  apt: name=gradle state=present update_cache=yes

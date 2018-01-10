@@ -1,0 +1,12 @@
+---
+ - hosts: web-dev
+   remote_user: vagrant
+   become: true
+   become_method: sudo
+   become_user: root
+   gather_facts: true
+   tasks:
+#     - include: tasks/xfce-desktop.yml
+     - include: tasks/editors.yml
+     - include: tasks/nodejs.yml
+     - include: tasks/tools.yml

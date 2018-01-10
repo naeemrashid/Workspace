@@ -1,0 +1,26 @@
+- name: Add script
+  get_url:
+   url: "https://deb.nodesource.com/setup_7.x"
+   dest: "/tmp/nodejs.sh"
+   mode: "0440"
+   force_basic_auth: yes
+- name: set permissions
+  file:
+   path: "/tmp/nodejs.sh"
+   mode: "u+x"
+- name: execute script
+  shell: "/tmp/nodejs.sh"
+- name: remove script
+  file:
+   path: "/tmp/nodejs.sh"
+   state: absent
+- name: install nodejs
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+   - build-essential
+   - nodejs
+- name: install bower and gulp
+  npm: name={{ item }} state=present global=true
+  with_items:
+   - bower
+   - gulp

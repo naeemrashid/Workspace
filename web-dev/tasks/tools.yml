@@ -1,0 +1,14 @@
+- name: Install Git
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+   - git
+   - curl
+- name: Install Meteorjs
+  shell: curl https://install.meteor.com | /bin/sh
+- name: Install bower, gulp, bootstrap
+  npm: name={{ item }} state=present global=true
+  with_items:
+   - bower
+   - gulp
+   - bootstrap
+
