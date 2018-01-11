@@ -6,6 +6,8 @@
    become_user: root
    gather_facts: true
    tasks:
+     - include_vars: defaults/main.yml
      - include: tasks/jdk.yml
-     - include: tasks/gnome-desktop.yml
+     - include: tasks/xfce-desktop.yml
+     - include: tasks/utilities.yml
      - include: tasks/eclipse.yml

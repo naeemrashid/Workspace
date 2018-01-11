@@ -6,7 +6,7 @@ Vagrant.configure(2) do |config|
     webdev.vm.box_check_update = false
     webdev.vm.hostname="webdev"
      webdev.vm.provider "virtualbox" do |vb|
-      vb.gui = false
+      vb.gui = true
       vb.name = "webdevstack"
       vb.customize ["modifyvm", :id, "--memory", "1024"]
     end
