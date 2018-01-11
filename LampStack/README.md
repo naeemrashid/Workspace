@@ -1,6 +1,8 @@
 ## Installation Steps
  ``` Ruby
     vagrant up
+    username: vagrant
+    password: vagrant
  ```
 ## Included Packages
 + apache2

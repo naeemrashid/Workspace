@@ -19,8 +19,3 @@
   with_items:
    - build-essential
    - nodejs
-- name: install bower and gulp
-  npm: name={{ item }} state=present global=true
-  with_items:
-   - bower
-   - gulp
