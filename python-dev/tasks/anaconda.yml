@@ -1,0 +1,23 @@
+- name: Install Anaconda3 | download script
+  get_url:
+   url:  "{{ 'https://repo.continuum.io/archive/Anaconda3-' + anaconda_version + '-Linux-x86_64.sh' }}"
+   dest: /tmp/anaconda.sh
+   mode: "0440"
+- name: Install Anaconda3 | make executable
+  file:
+   path: "/tmp/anaconda.sh"
+   mode: "u+x"
+- name: Install Anaconda3 | run script
+  shell: "/tmp/anaconda.sh -b -p ~/anaconda"
+- name: Install Anaconda3 | remove file
+  file:
+   path: "/tmp/anaconda.sh"
+   state: absent
+   # https://coderwall.com/p/ynvi0q/updating-path-with-ansible-system-wide
+- name: Install Anaconda3 | add to path
+  lineinfile: >
+    dest=/etc/environment
+    state=present
+    backrefs=yes
+    regexp='PATH=(["]*)((?!.*?{{anaconda_path}}).*?)(["]*)$'
+    line="PATH=\1\2:{{anaconda_path}}\3"

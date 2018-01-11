@@ -1,0 +1,10 @@
+---
+ - hosts: python
+   remote_user: vagrant
+   become: true
+   become_method: sudo
+   become_user: root
+   gather_facts: true
+   tasks:
+     - include_vars: defaults/main.yml
+     - include: tasks/anaconda.yml
