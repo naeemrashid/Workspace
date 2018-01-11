@@ -1,20 +1,17 @@
-- name: Install Atom
-  apt-repositoy:
-  repo: ppa:webupd8team/atom
-  state: present
+- name: Install Atom | add repo
+  apt_repository:
+   repo: ppa:webupd8team/atom
+   state: present
+   update_cache: yes
 - name: Install Atom
   apt: name=atom state=present update_cache=yes
-- name: Install VScode | download .deb file
-  get_url:
-   url: https://az764295.vo.msecnd.net/stable/0759f77bb8d86658bc935a10a64f6182c5a1eeba/code_1.19.1-1513676564_amd64.deb
-   path: "/tmp/code.deb"
-   mode: "0440"
-   force_basic_auth: yes
-- name: Install VScode | install .deb
-  shell: dpkg -i /tmp/code.deb
-- name: Install VScode | remove files
-  file:
-   path: "/tmp/code.deb"
-   state: absent
+- name: Install VScode |  with ubuntu-make
+  shell: umake ide visual-studio-code
+- name: Install Sublime texteditor | add repo
+  apt_repository:
+    repo: ppa:webupd8team/sublime-text-2
+    state: present
+- name: Install Sublime texteditor | Installation
+  apt: name=sublime-text state=present update_cache=yes
 - name: Install Gimp
   apt: name=gimp state=present update_cache=yes

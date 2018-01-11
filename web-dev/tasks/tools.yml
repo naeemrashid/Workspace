@@ -3,9 +3,28 @@
   with_items:
    - git
    - curl
-- name: Install Meteorjs
-  shell: curl https://install.meteor.com | /bin/sh
-- name: Install bower, gulp, bootstrap
+- name: Install Meteorjs | get download script
+  get_url:
+   url: https://install.meteor.com
+   dest: "/tmp/meteor.sh"
+   mode: "0440"
+- name: Install Meteorjs | change permission
+  file:
+   path: "/tmp/meteor.sh"
+   mode: "u+x"
+- name: Install Meteorjs | execute script
+  shell: "/tmp/meteor.sh"
+- name: Install Meteorjs | remove file
+  file:
+   path: "/tmp/meteor.sh"
+   state: absent
+- name: Install ubuntu-make | add repo
+  apt_repository:
+   repo: ppa:ubuntu-desktop/ubuntu-make
+   state: present
+- name: Install ubuntu-make | Installation
+  apt: name=ubuntu-make state=present update_cache=yes
+- name: Install bower,gulp,bootstrap
   npm: name={{ item }} state=present global=true
   with_items:
    - bower
