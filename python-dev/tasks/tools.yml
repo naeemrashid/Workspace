@@ -1,0 +1,6 @@
+- name: Install ubuntu-make | add repo
+  apt_repository:
+   repo: ppa:ubuntu-desktop/ubuntu-make
+   state: present
+- name: Install ubuntu-make | Installation
+  apt: name=ubuntu-make state=present update_cache=yes

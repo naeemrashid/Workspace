@@ -1,0 +1,13 @@
+- name: install xfce4 minimal packages
+  apt: name="{{ item }}" state="present" update_cache=yes
+  with_items: 
+    - "{{ xfce4_packages }}"
+    - "{{ xfce4_login_manager_package }}"
+
+- name: install xfce4 extra packages
+  apt: name="{{ item }}" state="present" update_cache=yes
+  with_items: 
+    - "{{ xfce4_extra_packages }}"
+
+- name: restart login manager service
+  service: name="{{ xfce4_login_manager_service }}" state="restarted"

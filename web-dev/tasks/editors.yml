@@ -6,7 +6,7 @@
 - name: Install Atom
   apt: name=atom state=present update_cache=yes
 - name: Install VScode |  with ubuntu-make
-  shell: umake ide visual-studio-code
+  shell: "umake ide visual-studio-code -y"
 - name: Install Sublime texteditor | add repo
   apt_repository:
     repo: ppa:webupd8team/sublime-text-2
