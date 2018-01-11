@@ -8,3 +8,6 @@
    tasks:
      - include_vars: defaults/main.yml
      - include: tasks/anaconda.yml
+     - include: tasks/xfce-desktop.yml
+     - include: tasks/tools.yml
+     - include: tasks/pycharm.yml
