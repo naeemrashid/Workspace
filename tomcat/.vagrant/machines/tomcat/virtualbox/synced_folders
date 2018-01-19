@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/lib/tomcat7/webapps":{"guestpath":"/var/lib/tomcat7/webapps","hostpath":"/home/naeem/FinalYearWork/WorkSpace/Workspace/tomcat/src","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/naeem/FinalYearWork/WorkSpace/Workspace/tomcat","disabled":false,"__vagrantfile":true}}}
