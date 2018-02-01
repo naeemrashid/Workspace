@@ -1,0 +1,12 @@
+- name: Install docker | add key
+  apt_key:
+   id: "{{ key_id }}"
+   keyserver: "{{ key_server }}"
+   state: 'present'
+- name: Install docker | add repo
+  apt_repository:
+   repo:  'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name }} stable'
+   state: 'present'
+   update_cache: yes
+- name: Install docker-ce | Installation
+  apt: name=docker-ce state=present update_cache=yes

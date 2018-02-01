@@ -1,0 +1,8 @@
+- name: Install build essentials
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+   - apt-transport-https
+   - curl
+   - software-properties-common
+   - linux-image-extra-virtual
+   - linux-image-extra-*
