@@ -1,13 +1,11 @@
 ## Installation Steps
  ``` Ruby
-    cd python-dev/
+    cd docker-pack/
     vagrant up
     username: vagrant
     password: vagrant
  ```
 ## Included Packages
-+ PyCharm
-+ Anaconda
-+ ubuntu-make
++ docker-ce
 
 
