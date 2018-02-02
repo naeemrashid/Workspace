@@ -1,0 +1,12 @@
+---
+ - hosts: lamp
+   remote_user: vagrant
+   become: true
+   become_method: sudo
+   become_user: root
+   gather_facts: true
+   tasks:
+    - include_vars: defaults/main.yml
+    - include: tasks/apache.yml
+    - include: tasks/mysql.yml
+    - include: tasks/php.yml

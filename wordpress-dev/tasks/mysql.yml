@@ -1,0 +1,27 @@
+- name: Install mysql-server
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - python-mysqldb
+    - mysql-server
+- name: conpy config files
+  copy:
+   src: .my.cnf
+   dest: ~/.my.cnf
+   mode: 0644
+- name: start mysql service
+  service:
+   name: mysql
+   state: started
+- name: enable mysql root password
+  mysql_user:
+   name: root
+   host: "{{ item }}"
+   login_user: root
+   login_password: "{{ mysql_root_pass }}"
+   check_implicit_admin: yes
+   priv: "*.*:ALL,GRANT"
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost 

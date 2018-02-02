@@ -1,0 +1,20 @@
+- name: install apache2
+  apt:
+   name: apache2
+   state: present 
+   update_cache: yes
+- name: check apache2 is installed
+  service:
+   name: apache2
+   state: started
+- name: allow incoming traffic from firewall
+  ufw:
+   rule: allow
+   port: 80
+   direction: in
+- name: add localhost to configuration file
+  lineinfile:
+   dest: "/etc/apache2/apache2.conf"
+   line: 'ServerName 127.0.0.1'
+   owner: root
+

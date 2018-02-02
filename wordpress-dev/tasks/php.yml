@@ -1,0 +1,15 @@
+- name: Add php repository
+  apt_repository:
+   repo: ppa:ondrej/php
+   state: present
+- name: Install php
+  apt: name=php5.6 state=present update_cache=yes
+- name: Test PHP installation
+  copy:
+   src: ../tests/info.php
+   dest: /var/www/html/info.php
+   mode: 0644
+- name: Restart Apache to test installation
+  service:
+   name: apache2
+   state: restarted
