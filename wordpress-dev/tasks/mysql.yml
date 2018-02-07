@@ -3,7 +3,9 @@
   with_items:
     - python-mysqldb
     - mysql-server
-- name: conpy config files
+    - libapache2-mod-auth-mysql
+    - php5-mysql
+- name: copy config files
   copy:
    src: .my.cnf
    dest: ~/.my.cnf

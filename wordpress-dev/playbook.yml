@@ -1,5 +1,5 @@
 ---
- - hosts: lamp
+ - hosts: wordpress
    remote_user: vagrant
    become: true
    become_method: sudo
@@ -10,3 +10,4 @@
     - include: tasks/apache.yml
     - include: tasks/mysql.yml
     - include: tasks/php.yml
+    - include: tasks/wordpress.yml

@@ -1,0 +1,7 @@
+- name: Install wordpress | download and extract files
+  unarchive:
+    src: http://wordpress.org/latest.tar.gz
+    copy: no
+    dest: /var/www/
+    mode: u=rwx,g=rx,o=rx
+    remote_src: yes
